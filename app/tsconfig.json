@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+    "target": "ES5",
+    "module": "es2015",
+    "allowJs": true,          
+        "jsx": "react",
+        "noEmitOnError": true,
+        "noUnusedLocals": true,
+        "removeComments": true,
+        "noImplicitAny": true,
+        "esModuleInterop": true
+    },
+"include": ["src/**/*"]
+}

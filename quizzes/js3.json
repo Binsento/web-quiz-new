@@ -1,0 +1,93 @@
+{
+    "type": "JavaScript",
+    "title": "Объекты JavaScript",
+    "description": "Колекции, промисы, прокси. Порой задания на внимательность",
+    "level": 3,
+    "test": [
+        {
+            "question": ["Задано: let mySet = new Set([1, 2, 2, 3])", "Что выведет console.log(mySet[2])?"],
+            "answers": [
+                "2",
+                "3",
+                "0",
+                "undefined"
+            ],
+            "correct": "4"
+        },
+        {
+            "question": ["Задано: let mySet = new Set([1, 2, 2, 3])", "Что выведет console.log (mySet.delete(2))?"],
+            "answers": [
+                "2",
+                "true",
+                "false",
+                "null",
+                "undefined"
+            ],
+            "correct": "2"
+        },
+        {
+            "question": ["Задано: let mySet = new Set([3, 2, 1])", "Что последовательно выведется в console при выполнении кода:", "mySet.forEach((value, key) => console.log(value*key))"],
+            "answers": [
+                "3 4 3",
+                "3 2 1",
+                "9 4 1",
+                "0 0 0",
+                "NaN NaN NaN"
+            ],
+            "correct": "3"
+        },
+        {
+            "question": ["Задано: let myMap = new Map()", "myMap.set('1','startValue').set(1,'anotherValue')", "console.log(myMap.get('1'))"],
+            "answers": [
+                "startValue",
+                "anotherValue",
+                "1",
+                "undefined",
+                "Будет ошибка"
+            ],
+            "correct": "1"
+        },
+        {
+            "question": "Какой из вариантов одновременно относится и к Map, и к WeakMap",
+            "answers": [
+                "Можно очистить коллекцию методом clear()",
+                "Можно проверить наличие ключа методом has(key)",
+                "Можно узнать количество элементов с помощью свойства size",
+                "Можно перебрать элементы методом forEach",
+                "Ключом может быть только обьект"
+            ],
+            "correct": "2"
+        }
+        ,
+        {
+            "question": "Какой метод промиса позволяет поймать выброшенную в промисе ошибку?",
+            "answers": [
+                "finally",
+                "error",
+                "catch",
+                "reject"
+            ],
+            "correct": "3"
+        },
+        {
+            "question": ["В чем отличие при выполнении промисов:", ".then(null, errorHandlingFunc)", ".catch(errorHandlingFunc)" ],
+            "answers": [
+                "В первом случае обработается только ошибка выброшенная через оператор throw",
+                "В первом случае при ошибке промис then автоматически перебросит ее дальше, завершившись reject",
+                "Только во втором случае можно продолжить цепь промисов, в первом случае он должен быть последним",
+                "При такой записи между этими случаями нет никаких отличий"
+            ],
+            "correct": "4"
+        },
+        {
+            "question": "Что из нижеприведенного можно обернуть в Proxy?",
+            "answers": [
+                "Объект",
+                "Массив",
+                "Функцию",
+                "Все перечисленное"
+            ],
+            "correct": "4"
+        }
+    ]
+}

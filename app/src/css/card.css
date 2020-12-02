@@ -1,0 +1,40 @@
+.main__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 350px;
+    min-height: 200px;
+    border: solid 1px black;
+    text-align: center;
+    background-color: white;
+    margin: 3px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.9)
+}
+
+.main__card_type {
+    color: #ccc;
+    align-self: flex-end;
+    font-size: 12px;
+}
+
+.main__card_title {
+    color: blue;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.main__card_score {
+    color: blue;
+    font-weight: bolder;
+}
+
+.main__card:hover {
+    border: solid 2px blue;
+    background-color: rgba(255, 255, 255, 1)
+}
+
+a:active, a:hover, a {
+    text-decoration: none;
+    color: #000;
+}

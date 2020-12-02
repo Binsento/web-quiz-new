@@ -1,0 +1,18 @@
+.wrapper {
+    text-align: center;
+    margin-top: 25vh;
+}
+
+.image{
+    width: 12vmax;
+    height: 12vmax;
+}
+
+.image__preloader {
+    animation: spin 2s linear 0s infinite;
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}

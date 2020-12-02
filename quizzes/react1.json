@@ -1,0 +1,78 @@
+{
+    "type": "React",
+    "title": "Основы React",
+    "description": "Основные принципы React и JSX",
+    "level": 1,
+    "test": [
+        {
+            "question": "Каким способом можно создать React-компонент?",
+            "answers": [
+                "class NewComponent extends React.Component",
+                "const NewComponent = () => ",
+                "var NewComponent = React.createClass()",
+                "Любым из вышеперечисленных"
+            ],
+            "correct": "4"
+        },
+        {
+            "question": "Как правильно вывести компонент для рендера на странице?",
+            "answers": [
+                "<Test>",
+                "<Test />",
+                "</ Test>",
+                "Любым из вышеперечисленных способов"
+            ],
+            "correct": "2"
+        },
+        {
+            "question": "Какой метод отвечает за вывод информации?",
+            "answers": [
+                "React.Dom",
+                "render",
+                "react",
+                "onRender"
+            ],
+            "correct": "2"
+        },
+        {
+            "question": "Сколько родительских элементов можно вывести в рендер компонента?",
+            "answers": [
+                "Не более одного",
+                "Не более 32-х",
+                "Не более 64-х",
+                "Неограниченное количество"
+            ],
+            "correct": "1"
+        },
+        {
+            "question": "Какого из методов жизненного цикла не существует в React?",
+            "answers": [
+                "componentDidUpdate",
+                "componentDidMount",
+                "componentDidUnmount",
+                "componentDidCatch"
+            ],
+            "correct": "3"
+        },
+        {
+            "question": "Как правильно изменить значение в состоянии компонента?",
+            "answers": [
+                "this.props.state.num = 1",
+                "this.state.num = 1",
+                "state[num] = 1",
+                "this.setState({num: 1})",
+                "this.setState.num = 1"
+            ],
+            "correct": "4"
+        },
+        {
+            "question": "Какой компонент может иметь состояние?",
+            "answers": [
+                "Только корневой элемент, монтирующийся ReactDOM",
+                "Компонент, который имеет дочерние React-компоненты",
+                "Любой компонент"
+            ],
+            "correct": "3"
+        }
+    ]
+}

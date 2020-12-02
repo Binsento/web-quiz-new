@@ -1,0 +1,19 @@
+.filter__button {
+    text-align: center;
+    color: #ccc;
+    background-color: blue;
+    box-shadow: inset 2px 2px 8px #27496d;
+    border-radius: 10px;
+    border: none;
+    padding: 8px;
+    margin: 5px;
+}
+
+.filter__button:focus {
+    outline: none;
+}
+
+.filter__button_active {
+    box-shadow: 1px 1px 8px #27496d;
+    color: #fff;
+}

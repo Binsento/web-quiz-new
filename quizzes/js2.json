@@ -1,0 +1,131 @@
+{
+    "type": "JavaScript",
+    "title": "Типы и нюансы JS",
+    "description": "Укажи, каким будет вывод в консоль приведенных фрагментов",
+    "level": 2,
+    "test": [
+        {
+            "question": "console.log(typeof typeof 2)",
+            "answers": [
+                "number",
+                "object",
+                "string",
+                "undefined",
+                "null"
+            ],
+            "correct": "3"
+        },
+        {
+            "question": ["let с = 3.14", "console.log(c++)"],
+            "answers": [
+                "c++",
+                "3.14",
+                "4.14",
+                "Пустая строка",
+                "Выдаст ошибку"
+            ],
+            "correct": "3"
+        },
+        {
+            "question": "console.log(0 ? 0 : 1)",
+            "answers": [
+                "false",
+                "true",
+                "0",
+                "1"
+            ],
+            "correct": "4"
+        },
+        {
+            "question": ["var a = new Array(5,50)", "var a = new Array(5,50)", "console.log(a == b)"],
+            "answers": [
+                "true",
+                "false",
+                "undefined"
+            ],
+            "correct": "2"
+        },
+        {
+            "question": "console.log(typeof null);",
+            "answers": [
+                "null",
+                "string",
+                "object",
+                "undefined"
+            ],
+            "correct": "3"
+        },
+        {
+            "question": "console.log(0.7 + 0.2)",
+            "answers": [
+                "0,9",
+                "0.9",
+                "0.70.2",
+                "Иной результат"
+            ],
+            "correct": "4"
+        }
+        ,
+        {
+            "question": "console.log(Math.min(null,200))",
+            "answers": [
+                "null",
+                "200",
+                "0",
+                "1",
+                "NaN"
+            ],
+            "correct": "3"
+        },
+        {
+            "question": ["var digitArray = []","digitArray[5] = 10","console.log(digitArray.length)"],
+            "answers": [
+                "0",
+                "1",
+                "5",
+                "6"
+            ],
+            "correct": "4"
+        },
+        {
+            "question": ["var userArray = new Array(3)","console.log(userArray.toString())"],
+            "answers": [
+                "[]",
+                "undefined",
+                ",",
+                ",,"
+            ],
+            "correct": "4"
+        },
+        {
+            "question": ["var numbers = Array(2,10)","numbers[numbers.length] = 0","console.log(numbers.length)"],
+            "answers": [
+                "-1",
+                "0",
+                "2",
+                "3"
+            ],
+            "correct": "4"
+        },
+        {
+            "question": ["var obj ={'0':1,0:2}", "console.log(obj['0'])"],
+            "answers": [
+                "0",
+                "1",
+                "2",
+                "undefined"
+            ],
+            "correct": "3"
+        },
+        {
+            "question": "console.log(11111111111111111 === 11111111111111113)",
+            "answers": [
+                "undefined",
+                "true",
+                "false",
+                "Выдаст ошибку"
+            ],
+            "correct": "2"
+        }
+    ]
+}

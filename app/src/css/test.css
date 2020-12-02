@@ -1,0 +1,42 @@
+
+.test {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.test__text {
+    user-select: none;
+    border: solid white 2px;
+    border-radius: 15px;
+    box-shadow: 0 3px #27496d;
+    text-align: center;
+    color: white;
+    background-color: blue;
+}
+
+.test__question {
+    white-space: pre-wrap;
+    padding: 20px;
+    margin: 10px;
+    width: 50%;
+}
+
+.test__result {
+    padding: 20px;
+    margin: 10px;
+    width: 50%;
+}
+
+.test__answer {
+    list-style: none;
+    margin: 5px;
+    padding: 15px;
+    width: 40%;
+}
+
+.test__variants {
+    padding: 0;
+}

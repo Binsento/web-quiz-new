@@ -1,0 +1,113 @@
+{
+    "type": "HTML/CSS",
+    "title": "Разметка и стили",
+    "description": "Простые вопросы по разметке и таблицам стилей",
+    "level": 1,
+    "test": [
+        {
+            "question": "Какой тэг в HTML задает заголовок всего документа?",
+            "answers": [
+                "<h1>",
+                "<span>",
+                "<p>",
+                "<title>"
+            ],
+            "correct": "4"
+        },
+        {
+            "question": "Какой из этих тэгов не был добавлен в HTML5?",
+            "answers": [
+                "<article>",
+                "<nav>",
+                "<background>",
+                "<menu>",
+                "<footer>"
+            ],
+            "correct": "3"
+        },
+        {
+            "question": "Какой тэг создает нумерованый список?",
+            "answers": [
+                "<ol>",
+                "<ul>",
+                "<dl>",
+                "<li>",
+                "<list>"
+            ],
+            "correct": "1"
+        },
+        {
+            "question": "Какому из этих тэгов не нужен закрывающий тэг?",
+            "answers": [
+                "<strong>",
+                "<a>",
+                "<input>",
+                "<button>",
+                "<label>"
+            ],
+            "correct": "3"
+        },
+        {
+            "question": "Какой из тэгов input неверен?",
+            "answers": [
+                "<input type = 'button'>",
+                "<input type = 'radio'>",
+                "<input type = 'range'>",
+                "<input type = 'login'>",
+                "<input type = 'url'>"
+            ],
+            "correct": "4"
+        },    
+        {
+            "question": "Как правильно задать селектор CSS для всех тэгов <p>?",
+            "answers": [
+                "p {}",
+                ".p {}",
+                "#p {}",
+                ">p {}",
+                "p:all {}"
+            ],
+            "correct": "1"
+        },
+        {
+            "question": "Какое свойство отвечает за внутренние поля элемента?",
+            "answers": [
+                "outline",
+                "padding",
+                "margin",
+                "border"
+            ],
+            "correct": "2"
+        },
+        {
+            "question": "Чтобы сделать текст элемента прозрачным, свойство color указывается со значением...",
+            "answers": [
+                "inherit",
+                "transparent",
+                "50%",
+                "0.5"
+            ],
+            "correct": "2"
+        },
+        {
+            "question": "Задано свойство font-family: Arial, Times New Roman, Helvetica, sans-serif. Что в нем не так?",
+            "answers": [
+                "Задавать можно только один шрифт в каждой строке",
+                "Нужно применять не font-family, а font",
+                "Шрифт Times New Roman должен быть в кавычках",
+                "В свойстве все указано верно"
+            ],
+            "correct": "3"
+        },
+        {
+            "question": "Каким из нижесприведенных значений нельзя задать свойство color?",
+            "answers": [
+                "#hhhhhh",
+                "#000",
+                "black",
+                "rgb(255,255,255)"
+            ],
+            "correct": "1"
+        }
+    ]
+}

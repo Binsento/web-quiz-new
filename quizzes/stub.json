@@ -1,0 +1,27 @@
+{
+    "title": "Тестовый тест",
+    "description": "Короткий и простой тест для тестирования функционала",
+    "level": 0,
+    "test": [
+        {
+            "question": "Как называется один из фреймворков JavaScript",
+            "answers": [
+                "Angular",
+                "Windows",
+                "Linux",
+                "Unix"
+            ],
+            "correct": "1"
+        },
+        {
+            "question": "Что из этого не является языком программирования?",
+            "answers": [
+                "Javascript",
+                "Java",
+                "HTML",
+                "PHP"
+            ],
+            "correct": "3"
+        }
+    ]
+}
