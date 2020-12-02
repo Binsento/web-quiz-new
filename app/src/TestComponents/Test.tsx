@@ -24,15 +24,14 @@ export class Test extends Component<Props> {
     }
     componentDidUpdate(prevProps: Props) {
         if (prevProps.testDone !== this.props.testDone) {
-            let isPerfect = this.props.score === this.props.questions
-            let currentRunStats = [this.props.id, this.props.score, isPerfect]
+            const isPerfect = this.props.score === this.props.questions
             if (isPerfect && !(this.props.testStats.isPerfect)) {
                 this.props.updatePerfectCount()
             }
             if (!this.props.testStats.attempts) {
                 this.props.updatePassedCount()
             }
-            this.props.updateTestStats(...currentRunStats)
+            this.props.updateTestStats(this.props.id, this.props.score, isPerfect)
         }
     }
     componentWillUnmount() {

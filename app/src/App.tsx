@@ -21,7 +21,7 @@ class App extends Component<Props> {
 
   loadAchievementsStats = () => {
     for (let [id, date] of Object.entries(this.props.earnedAchievements)) {
-      this.props.loadStats(id, date)
+      this.props.loadStats(id, date as string)
     }
   }
 
