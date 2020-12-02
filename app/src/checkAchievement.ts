@@ -1,7 +1,10 @@
 // функция, проверяющая условия выполнения ачивок. Сложные проверки вынесены отдельно для облегчения
 //масштабирования ачивок в духе 'сделать X действий'
 
-const checkAchievement = (id, state) => {
+import {UserStoreData} from "./services/redux-types";
+
+//TODO переписать все, что ниже
+const checkAchievement = (id: string, state: UserStoreData): boolean => {
     switch (id) {
         case 'ach1': {
             return state.passed === 3
@@ -28,7 +31,7 @@ const checkAchievement = (id, state) => {
     }
 }
 
-export const checkAttempts = (testsInfo, number) => {
+export const checkAttempts = (testsInfo:UserStoreData['passedTests'], number: number): boolean => {
     for (var key in testsInfo) {
         if (testsInfo[key].attempts === number) {
             return true
@@ -37,7 +40,7 @@ export const checkAttempts = (testsInfo, number) => {
     return false
 }
 
-export const sumAttempts = (testsInfo) => {
+export const sumAttempts = (testsInfo: UserStoreData['passedTests']): number => {
     let sum = 0
     for (var key in testsInfo) {
         sum += testsInfo[key].attempts || 0
