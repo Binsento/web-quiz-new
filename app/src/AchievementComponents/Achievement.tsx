@@ -1,25 +1,29 @@
 //Компонент конкретной ачивки, который запускает процедуру получения, когда выполнено условие. 
 //Библиотека react-hover отрисовывает картинку с инфой по наведению (или ничего, если ориентация устройства портретная)
 
-import React from 'react'
+import React, {Component} from 'react'
+//@ts-ignore
 import ReactHover, { Trigger, Hover } from 'react-hover'
 import AchievementPic from './AchievementPic'
 import AchievementInfo from './AchievementInfo'
 import checkAchievement from '../checkAchievement'
-import { connect } from 'react-redux'
+import {connect, ConnectedProps} from 'react-redux'
 import { achievementEarn, updateAchievementsCount } from '../actionCreators'
-import PropTypes from 'prop-types'
+import {RootStoreData} from "../services/redux-types";
 
-export class Achievement extends React.Component {
+type OwnProps = {id: string}
 
-    shouldComponentUpdate(nextProps) {
-        return (this.props.isFulfiled !== nextProps.isFulfiled ||
+type Props = OwnProps & PropsFromRedux
+
+export class Achievement extends Component<Props> {
+    shouldComponentUpdate(nextProps: Props) {
+        return (this.props.isFulfilled !== nextProps.isFulfilled ||
         this.props.isEarn !== nextProps.info.isEarn ||
         this.props.isLandscape !== nextProps.isLandscape)
     }
 
-    componentDidUpdate(prevProps) {
-        if (prevProps.isFulfiled !== this.props.isFulfiled) {
+    componentDidUpdate(prevProps: Props) {
+        if (prevProps.isFulfilled !== this.props.isFulfilled) {
             this.props.achievementEarn()
             this.props.updateAchievementsCount()
         }
@@ -46,24 +50,22 @@ export class Achievement extends React.Component {
     }
 }
 
-Achievement.propTypes = {
-    info: PropTypes.object.isRequired,
-    isLandscape: PropTypes.bool.isRequired,
-    isEarn: PropTypes.bool.isRequired,
-    isFulfiled: PropTypes.bool.isRequired
-}
-
-const mapStateToProps = ({achievements, user}, ownProps) => ({
-    info: achievements[ownProps.id],
-    isLandscape: user.isLandscape,
-    isEarn: achievements[ownProps.id].earn,
-    isFulfiled: !!user.earnedAchievements[ownProps.id] || checkAchievement(ownProps.id, user)
+const mapState = (state: RootStoreData, ownProps: OwnProps) => ({
+    info: state.achievements[ownProps.id],
+    isLandscape: state.user.isLandscape,
+    isEarn: state.achievements[ownProps.id].earn,
+    isFulfilled: Boolean(state.user.earnedAchievements[ownProps.id]) || checkAchievement(ownProps.id, state.user)
 })
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+//Todo диспатч тип
+const mapDispatch = (dispatch: any , ownProps: OwnProps) => ({
     achievementEarn: () => dispatch(achievementEarn(ownProps.id)),
     updateAchievementsCount: () => dispatch(updateAchievementsCount(ownProps.id))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Achievement)
+const connector = connect(mapState, mapDispatch);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+export default connector(Achievement)
 

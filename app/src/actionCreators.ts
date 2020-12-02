@@ -1,13 +1,14 @@
-import* as t from './actionTypes'
+import * as t from './actionTypes'
+import {TestData} from "./types";
 
 //achievement
 
-export const achievementEarn = (id) => ({
+export const achievementEarn = (id: string) => ({
     type: t.NEW_ACHIEVEMENT_EARN,
     id
 })
 
-export const loadStats = (id, date) => ({
+export const loadStats = (id: string, date: string) => ({
     type: t.LOAD_ACHIEVEMENT_STATS,
     id,
     date
@@ -18,7 +19,7 @@ export const getTypes = () => ({
     type: t.GET_TYPES
 })
 
-export const getTypesSuccess = (types) => ({
+export const getTypesSuccess = (types: Set<string>  ) => ({
     type: t.GET_TYPES_SUCCESS,
     payload: types
 })
@@ -31,12 +32,12 @@ export const clearFilter = () => ({
     type: t.CLEAR_FILTER
 })
 
-export const addFilter = (type) => ({
+export const addFilter = (type: string) => ({
     type: t.ADD_FILTER_TYPE,
     payload: type
 })
 
-export const removeFilter = (type) => ({
+export const removeFilter = (type: string) => ({
     type: t.REMOVE_FILTER_TYPE,
     payload: type
 })
@@ -47,7 +48,7 @@ export const removeFilter = (type) => ({
 export const getTests = () => ({
     type: t.GET_TESTS
 })
-export const getTestsSuccess = (tests) => ({
+export const getTestsSuccess = (tests: TestData[]) => ({
     type: t.GET_TESTS_SUCCESS,
     tests
 })
@@ -56,7 +57,7 @@ export const getTestsFailure = () => ({
     type: t.GET_TESTS_FAILURE
 })
 
-export const startTest = (id) => ({
+export const startTest = (id: string) => ({
     type: t.START_TEST,
     id
 })
@@ -77,12 +78,12 @@ export const testExit = () => ({
 
 //user
 
-export const setTestStats = (id) => ({
+export const setTestStats = (id: string) => ({
     type: t.SET_TEST_STATS,
     id
 })
 
-export const updateTestStats = (id, score, isPerfect) => ({
+export const updateTestStats = (id: string, score: number, isPerfect: boolean) => ({
     type: t.UPDATE_TEST_STATS,
     id,
     score,
@@ -96,7 +97,7 @@ export const updatePassedCount = () => ({
     type: t.UPDATE_PASSED_COUNT
 })
 
-export const updateAchievementsCount = (id) => ({
+export const updateAchievementsCount = (id: string) => ({
     type: t.UPDATE_ACHIEVEMENTS_COUNT,
     id
 })

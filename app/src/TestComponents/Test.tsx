@@ -1,16 +1,19 @@
 //Основной компонент теста - запускающий, записывающий состояние после окончания, сбрасывающий при выходе
 
-import React from 'react'
+import React, {Component} from 'react'
 import '../css/test.css'
-import { connect } from 'react-redux'
+import {connect, ConnectedProps} from 'react-redux'
+import { RouteComponentProps } from 'react-router';
 import { startTest, testExit } from '../actionCreators'
 import { setTestStats, updateTestStats, updatePassedCount, updatePerfectCount } from '../actionCreators'
-import PropTypes from 'prop-types'
 import TestQuestion from './TestQuestions'
 import TestResult from './TestResult'
 import NotFound from '../OtherComponents/NotFound'
+import {RootStoreData} from "../services/redux-types";
 
-export class Test extends React.Component {
+type Props = PropsFromRedux
+
+export class Test extends Component<Props> {
     componentDidMount() {
         if (this.props.testExist) {
             this.props.startTest(this.props.id)
@@ -19,7 +22,7 @@ export class Test extends React.Component {
             }
         }
     }
-    componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps: Props) {
         if (prevProps.testDone !== this.props.testDone) {
             let isPerfect = this.props.score === this.props.questions
             let currentRunStats = [this.props.id, this.props.score, isPerfect]
@@ -44,22 +47,22 @@ export class Test extends React.Component {
     }
 }
 
-Test.propTypes = {
-    id: PropTypes.string.isRequired,
-    testExist: PropTypes.bool.isRequired,
-    testDone: PropTypes.bool.isRequired,
-    testStats: PropTypes.object,
-    score: PropTypes.number,
-    questions: PropTypes.number
+const mapState = (state: RootStoreData, ownProps: RouteComponentProps<{ id: string }>) => {
+    const id = ownProps.match.params.id || ''
+    return {
+        id,
+        testExist: state.tests.data.has(id),
+        testDone: state.tests.testDone,
+        testStats: state.user.passedTests[id],
+        score: state.tests.score,
+        questions: state.tests.test.length
+    }
 }
 
-const mapStateToProps = ({ user, tests }, {match}) => ({
-    id: match.params.id,
-    testExist: tests.data.has(match.params.id),
-    testDone: tests.testDone,
-    testStats: user.passedTests[match.params.id],
-    score: tests.score,
-    questions: tests.test.length
-})
+const mapDispatch = { startTest, testExit, setTestStats, updateTestStats, updatePassedCount, updatePerfectCount }
 
-export default connect(mapStateToProps, { startTest, testExit, setTestStats, updateTestStats, updatePassedCount, updatePerfectCount })(Test)
+const connector = connect(mapState, mapDispatch);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+export default connector(Test)

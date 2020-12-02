@@ -1,17 +1,17 @@
-import React from 'react'
+import React, {Component} from 'react'
 import './css/App.css'
 import './css/preloader.css'
-import { connect } from 'react-redux'
+import {connect, ConnectedProps} from 'react-redux'
 import { fetchTypes, fetchTests } from './initFunctions'
-import { changeOrientation, loadStats } from './actionCreators'
-import PropTypes from 'prop-types'
+import {changeOrientation, loadStats } from './actionCreators'
 import Routing from './OtherComponents/Routing'
-import Header from './OtherComponents/Header.jsx'
+import Header from './OtherComponents/Header'
 import Preloader from './OtherComponents/Preloader'
 import ErrorLoading from './OtherComponents/ErrorLoadind'
 
-class App extends React.Component {
+type Props = PropsFromRedux
 
+class App extends Component<Props> {
   checkOrientation = () => {
     let isCurrentLandscape = (window.innerWidth > window.innerHeight)
     if (isCurrentLandscape !== this.props.isLandscape) {
@@ -57,17 +57,17 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapState = (state: any) => ({
   doneFetching: state.filter.doneFetching && state.tests.doneFetching,
   error: state.filter.error || state.tests.error,
   isLandscape: state.user.isLandscape,
   earnedAchievements: state.user.earnedAchievements
 })
 
-App.propTypes = {
-  doneFetching: PropTypes.bool.isRequired,
-  error: PropTypes.bool.isRequired,
-  isLandscape: PropTypes.bool.isRequired,
-}
+const mapDispatch = { fetchTests, fetchTypes, changeOrientation, loadStats }
 
-export default connect(mapStateToProps, { fetchTests, fetchTypes, changeOrientation, loadStats })(App)
+const connector = connect(mapState, mapDispatch);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+export default connector(App)

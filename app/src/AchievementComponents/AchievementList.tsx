@@ -1,12 +1,14 @@
 //Список ачивок, группирующий получено/не получено
 
-import React from 'react'
+import React, {FC} from 'react'
 import '../css/list.css'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
+import {connect, ConnectedProps} from 'react-redux'
 import AchievementListBlock from './AchievementListBlock'
+import {RootStoreData} from "../services/redux-types";
 
-export const AchievementList = ({ achievements }) => {
+type Props = PropsFromRedux;
+
+export const AchievementList: FC<Props> = ({ achievements }) => {
     let ids = Object.keys(achievements)
     let earned = ids.filter((id) => achievements[id].earn)
     let notEarned = ids.filter((id) => !achievements[id].earn)
@@ -18,10 +20,10 @@ export const AchievementList = ({ achievements }) => {
     </section>)
 }
 
-AchievementList.propTypes = {
-    achievements: PropTypes.object.isRequired
-}
+const mapState = (state: RootStoreData) => ({achievements: state.achievements})
 
-const mapStateToProps = ({achievements}) => ({achievements})
+const connector = connect(mapState);
 
-export default connect(mapStateToProps)(AchievementList)
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+export default connector(AchievementList)
