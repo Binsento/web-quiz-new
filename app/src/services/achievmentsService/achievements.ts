@@ -41,4 +41,4 @@ export default {
         description: "Суммарно пройти тесты 10 раз",
         dateInMs: 0
     },
-}
+} as const

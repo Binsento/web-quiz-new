@@ -8,8 +8,9 @@ import AchievementPic from './AchievementPic'
 import AchievementInfo from './AchievementInfo'
 import checkAchievement from '../checkAchievement'
 import {connect, ConnectedProps} from 'react-redux'
-import { achievementEarn, updateAchievementsCount } from '../actionCreators'
+import { updateAchievementsCount } from '../actionCreators'
 import {RootStoreData} from "../services/redux-types";
+import {achievementEarn} from "../services/achievmentsService/achievementsSlice";
 
 type OwnProps = {id: string}
 

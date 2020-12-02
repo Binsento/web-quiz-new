@@ -1,4 +1,4 @@
-import achievementsReducers from '../services/achievmentsService/achievementReducers'
+import {achievementsReducer} from '../services/achievmentsService/achievementsSlice'
 import * as t from '../actionTypes'
 
 Date.now = jest.fn(() => 1500000000000)
@@ -13,7 +13,7 @@ let state = {
 describe('Achievements Reducers', () => {
     it('reducer NEW_ACHIEVEMENT_EARN', () => {
         expect(
-            achievementsReducers(state, {
+            achievementsReducer(state, {
                 type: t.NEW_ACHIEVEMENT_EARN,
                 id: 'test'
             })
@@ -27,7 +27,7 @@ describe('Achievements Reducers', () => {
     })
     it('reducer LOAD_ACHIEVEMENT_STATS', () => {
         expect(
-            achievementsReducers(state, {
+            achievementsReducer(state, {
                 type: t.LOAD_ACHIEVEMENT_STATS,
                 id: 'test',
                 date: 1500000000000
@@ -42,7 +42,7 @@ describe('Achievements Reducers', () => {
     })
     it('default return', () => {
         expect(
-            achievementsReducers(state, {
+            achievementsReducer(state, {
                 type: 'foo'
             })
         ).toEqual(state)

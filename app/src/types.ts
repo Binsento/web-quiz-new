@@ -6,3 +6,10 @@ export type TestData = {
     level: string,
     test: any[]
 }
+
+export type AchievementInfo = {
+    earn: boolean,
+    title: string,
+    description: string,
+    dateInMs: number
+}

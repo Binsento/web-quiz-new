@@ -3,11 +3,12 @@ import './css/App.css'
 import './css/preloader.css'
 import {connect, ConnectedProps} from 'react-redux'
 import { fetchTypes, fetchTests } from './initFunctions'
-import {changeOrientation, loadStats } from './actionCreators'
+import {changeOrientation } from './actionCreators'
 import Routing from './OtherComponents/Routing'
 import Header from './OtherComponents/Header'
 import Preloader from './OtherComponents/Preloader'
 import ErrorLoading from './OtherComponents/ErrorLoadind'
+import {loadAchievementStats} from "./services/achievmentsService/achievementsSlice";
 
 type Props = PropsFromRedux
 
@@ -21,7 +22,7 @@ class App extends Component<Props> {
 
   loadAchievementsStats = () => {
     for (let [id, date] of Object.entries(this.props.earnedAchievements)) {
-      this.props.loadStats(id, date as string)
+      this.props.loadAchievementStats({id, date: date as number})
     }
   }
 
@@ -64,7 +65,7 @@ const mapState = (state: any) => ({
   earnedAchievements: state.user.earnedAchievements
 })
 
-const mapDispatch = { fetchTests, fetchTypes, changeOrientation, loadStats }
+const mapDispatch = { fetchTests, fetchTypes, changeOrientation, loadAchievementStats }
 
 const connector = connect(mapState, mapDispatch);
 
