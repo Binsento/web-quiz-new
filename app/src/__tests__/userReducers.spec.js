@@ -1,4 +1,4 @@
-import userReducers from '../reducers/userReducers'
+import userReducers from '../services/userService/userReducers'
 import * as t from '../actionTypes'
 
 Date.now = jest.fn(() => 1500000000000)

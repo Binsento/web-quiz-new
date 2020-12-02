@@ -1,4 +1,4 @@
-import filterReducers from '../reducers/filterReducers'
+import filterReducers from '../services/filterService/filterReducers'
 import * as t from '../actionTypes'
 
 let state = {

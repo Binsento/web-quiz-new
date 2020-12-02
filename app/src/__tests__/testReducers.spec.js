@@ -1,4 +1,4 @@
-import testsReducers from '../reducers/testReducers'
+import testsReducers from '../services/testsService/testReducers'
 import * as t from '../actionTypes'
 
 describe('Test Reducers', () => {

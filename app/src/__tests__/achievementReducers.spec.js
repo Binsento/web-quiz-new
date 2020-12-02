@@ -1,4 +1,4 @@
-import achievementsReducers from '../reducers/achievementReducers'
+import achievementsReducers from '../services/achievmentsService/achievementReducers'
 import * as t from '../actionTypes'
 
 Date.now = jest.fn(() => 1500000000000)
