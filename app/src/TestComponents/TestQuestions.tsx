@@ -1,23 +1,26 @@
 //редернит конкретный вопрос теста
 
-import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import React, {FC, MouseEvent} from 'react'
+import {connect, ConnectedProps} from 'react-redux'
 import { correctAnswer, nextQuestion } from '../actionCreators'
 import RefButton from '../OtherComponents/RefButton'
+import {RootStoreData} from "../services/redux-types";
 
-export const TestQuestion = ({ currentQuestion, correctAnswer, nextQuestion }) => {
+type Props = PropsFromRedux
+
+export const TestQuestion: FC<Props> = ({ currentQuestion, correctAnswer, nextQuestion }) => {
     if (currentQuestion) {
-        const { question, answers, correct } = currentQuestion
+        const { question, answers , correct } = currentQuestion
         return (<section className='test'>
             <div className='test__text test__question'>
                 <p>{(typeof question === 'string')? question : question.join("\n")}</p>
             </div>
             <ul className='test test__variants'>{
-                answers.map((elem, i) =>
+                //TODO переделать эти костыли
+                answers.map((elem: string, i: number) =>
                     <li className='test__text test__answer'
-                        key={i} id={i + 1}
-                        onClick={(event) => {
+                        key={i} id={(i + 1).toString()}
+                        onClick={(event: MouseEvent<HTMLLIElement> & {target: {id: string}} ) => {
                             if (event.target.id === correct) {
                                 correctAnswer()
                             }
@@ -33,13 +36,14 @@ export const TestQuestion = ({ currentQuestion, correctAnswer, nextQuestion }) =
     else return null
 }
 
-TestQuestion.propTypes = {
-    currentQuestion: PropTypes.object
-}
-
-const mapStateToProps = ({tests}) => ({
-    currentQuestion: tests.test[tests.number]
+const mapState = (state: RootStoreData) => ({
+    currentQuestion: state.tests.test[state.tests.number]
 })
 
+const mapDispatch = { correctAnswer, nextQuestion }
 
-export default connect(mapStateToProps, { correctAnswer, nextQuestion })(TestQuestion)
+const connector = connect(mapState, mapDispatch);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+export default connector(TestQuestion)

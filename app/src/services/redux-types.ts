@@ -1,0 +1,1 @@
+export type RootStoreData = Record<string, any>

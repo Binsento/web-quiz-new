@@ -1,20 +1,22 @@
 //компонент, отрисовывающий кнопки доступных типов, включающих фильтры по ним
 
-import React from 'react'
+import React, {FC} from 'react'
 import '../css/filter.css'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import {connect, ConnectedProps} from 'react-redux'
 import { clearFilter, addFilter, removeFilter } from '../actionCreators'
+import {RootStoreData} from "../services/redux-types";
 
-export const TypeFilter = (props) => {
-    const toggleFilter = (type) => () => {
+type Props = PropsFromRedux
+
+export const TypeFilter:FC<Props>  = (props) => {
+    const toggleFilter = (type: string) => () => {
         props.typeFilter.has(type)
             ? props.removeFilter(type)
             : props.addFilter(type)
     }
     return <div className="mainpage__filter">
         <span key={'desc'}>Показать только:</span>
-        {Array.from(props.allTypes).map((value) =>
+        {Array.from(props.allTypes).map((value: string) =>
             <button key={value}
                 onClick={toggleFilter(value)}
                 className={`filter__button${props.typeFilter.has(value) ? ' filter__button_active' : ''}`}>
@@ -28,11 +30,12 @@ export const TypeFilter = (props) => {
     </div >
 }
 
-TypeFilter.propTypes = {
-    allTypes: PropTypes.instanceOf(Set).isRequired,
-    typeFilter: PropTypes.instanceOf(Set).isRequired
-}
+const mapState = (state: RootStoreData) => ({ allTypes: state.filter.allTypes, typeFilter: state.filter.allTypes })
 
-const mapStateToProps = ({ filter: { allTypes, typeFilter } }) => ({ allTypes, typeFilter })
+const mapDispatch = { clearFilter, addFilter, removeFilter }
 
-export default connect(mapStateToProps, { clearFilter, addFilter, removeFilter })(TypeFilter)
+const connector = connect(mapState, mapDispatch);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+export default connector(TypeFilter)

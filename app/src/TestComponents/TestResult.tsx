@@ -1,11 +1,13 @@
 // вывод результатов после окончания вопросов текущего теста
 
-import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import React, {FC} from 'react'
+import {connect, ConnectedProps} from 'react-redux'
 import RefButton from '../OtherComponents/RefButton'
+import {RootStoreData} from "../services/redux-types";
 
-export const TestResult = ({ score, questions }) =>
+type Props = PropsFromRedux
+
+export const TestResult: FC<Props> = ({ score, questions }) =>
     (<section className='test'>
         <div className='test__text test__result'>
             <p>{`Правильных ответов ${score}/${questions}`}</p>
@@ -17,14 +19,13 @@ export const TestResult = ({ score, questions }) =>
         <RefButton />
     </section>)
 
-TestResult.propTypes = {
-    score: PropTypes.number,
-    questions: PropTypes.number
-}
-
-const mapStateToProps = ({tests}) => ({
-    score: tests.score,
-    questions: tests.test.length
+const mapState = (state: RootStoreData) => ({
+    score: state.tests.score,
+    questions: state.tests.test.length
 })
 
-export default connect(mapStateToProps)(TestResult)
+const connector = connect(mapState);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+export default connector(TestResult)
