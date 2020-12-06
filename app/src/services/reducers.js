@@ -1,11 +1,11 @@
 import {combineReducers} from 'redux'
-import filter from './filterService/filterReducers'
+import {filtersReducer} from './filterService/filtersSlice'
 import tests from './testsService/testReducers'
 import user from './userService/userReducers'
 import {achievementsReducer} from './achievmentsService/achievementsSlice'
 
 export default combineReducers ({
-    filter,
+    filter: filtersReducer,
     tests,
     user,
     achievements: achievementsReducer

@@ -2,13 +2,14 @@ import React, {Component} from 'react'
 import './css/App.css'
 import './css/preloader.css'
 import {connect, ConnectedProps} from 'react-redux'
-import { fetchTypes, fetchTests } from './initFunctions'
+import { fetchTests } from './initFunctions'
 import {changeOrientation } from './actionCreators'
 import Routing from './OtherComponents/Routing'
 import Header from './OtherComponents/Header'
 import Preloader from './OtherComponents/Preloader'
 import ErrorLoading from './OtherComponents/ErrorLoadind'
 import {loadAchievementStats} from "./services/achievmentsService/achievementsSlice";
+import {fetchTypes} from "./services/filterService/async-actions";
 
 type Props = PropsFromRedux
 
@@ -35,7 +36,7 @@ class App extends Component<Props> {
   }
 
   componentDidMount() {
-    this.props.fetchTypes('/api/types')
+    this.props.fetchTypes()
     this.props.fetchTests('/api/tests')
     this.checkOrientation()
     this.loadAchievementsStats()

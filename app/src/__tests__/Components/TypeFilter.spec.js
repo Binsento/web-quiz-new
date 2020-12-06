@@ -1,7 +1,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import TypeFilter, {TypeFilter as DumbTypeFilter} from '../../OtherComponents/TypeFilter'
-import { clearFilter, addFilter, removeFilter } from '../../actionCreators'
+import { clearFilters, addFilter, removeFilter } from '../../services/filterService/filtersSlice'
 import { mount } from 'enzyme'
 import configureStore from 'redux-mock-store'
 
@@ -44,7 +44,7 @@ describe('Тестирование кнопок фильтрации тесто�
         expect(wrapper.find(TypeFilter).find('button').last().hasClass('filter__button_active')).toBeTruthy()
     })
     it('проверка соответствия выполняемых действий', () => {
-        const expectedActions = [addFilter('foo'), removeFilter('bar'), clearFilter()]
+        const expectedActions = [addFilter('foo'), removeFilter('bar'), clearFilters()]
         wrapper.find(TypeFilter).find('button').at(0).simulate('click')
         wrapper.find(TypeFilter).find('button').at(1).simulate('click')
         wrapper.find(TypeFilter).find('button').last().simulate('click')

@@ -9,3 +9,10 @@ export type UserStoreData = {
 }
 
 export type AchievementsStoreData = Record<string, AchievementInfo>
+
+export type FiltersStoreData = {
+    doneFetching: boolean,
+    error: boolean,
+    allTypes: Set<string>,
+    typeFilter: Set<string>,
+}

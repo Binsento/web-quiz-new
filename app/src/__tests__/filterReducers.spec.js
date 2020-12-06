@@ -1,4 +1,4 @@
-import filterReducers from '../services/filterService/filterReducers'
+import {filtersReducer} from '../services/filterService/filtersSlice'
 import * as t from '../actionTypes'
 
 let state = {
@@ -9,7 +9,7 @@ let state = {
 describe('Filter Reducers', () => {
     it('reducer ADD_FILTER_TYPE', () => {
         expect(
-            filterReducers(state, {
+            filtersReducer(state, {
                 type: t.ADD_FILTER_TYPE,
                 payload: 'test'
             })
@@ -20,7 +20,7 @@ describe('Filter Reducers', () => {
     })
     it('reducer REMOVE_FILTER_TYPE', () => {
         expect(
-            filterReducers(state, {
+            filtersReducer(state, {
                 type: t.REMOVE_FILTER_TYPE,
                 payload: 'bar'
             })
@@ -31,7 +31,7 @@ describe('Filter Reducers', () => {
     })
     it('reducer CLEAR_FILTER', () => {
         expect(
-            filterReducers(state, {
+            filtersReducer(state, {
                 type: t.CLEAR_FILTER
             })
         ).toEqual({
@@ -41,7 +41,7 @@ describe('Filter Reducers', () => {
     })
     it('default return', () => {
         expect(
-            filterReducers(state, {
+            filtersReducer(state, {
                 type: 'foo'
             })
         ).toEqual(state)
